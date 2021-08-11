@@ -48,3 +48,18 @@
     padding-right: 25px;
     border-radius: 10px;
 }
+#image_LocationDeVoitures{
+    width: 1080px;
+    display: inline-block;
+}
+.CarreauDeRecherche{
+    font-size: 30px;
+    background-color: maroon;
+    display: inline-block;
+}
+#DernierDiv{
+    background-color:limegreen ;
+    margin-top: -300px;
+    width: 1000px;
+    height: 300px;
+}
