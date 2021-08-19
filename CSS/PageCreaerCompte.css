@@ -1,0 +1,90 @@
+#BackgroundConnexion{
+    margin-left: 25%;
+    margin-right: 25%;
+    vertical-align: middle;
+    /*margin-top: 25%;*/
+    background-color :rgb(225, 225, 225);
+    border-color: rgb(160, 160, 160);
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+    transform: translateY(-60%); /* tiré de la moitié de sa propre hauteur */
+}
+
+.formulaire{
+    background-color:rgb(250, 250, 250);
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    height: 22%;
+    font-size: 100%;
+    box-shadow: 10px 5px 5px rgba(150, 150, 150);
+    margin-bottom: 3%;
+    width: 250px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 50px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(128, 128, 128);
+    border-radius: 5px;
+}
+.Text{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    width: 90%;
+    /*background-color: blue;*/
+    font-size: 20px;
+}
+#BouttonCreerCompte{
+    width: 30%;
+    font-size: 18px;
+    /*background-color: saddlebrown;*/
+    color: rgb(26, 115, 232);;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    display: inline-block;
+    position: relative;
+}
+#BouttonEnvoyer{
+    display: inline-block;
+    vertical-align: middle;
+}
+#BouttonConnexion{
+    background-color:rgb(26, 115, 232);
+    color: white;
+    font-weight:500;
+    width: 120px;
+    height: 30px;
+    /*margin-left: 30%;*/
+    vertical-align: middle;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    box-shadow: none;
+}
+#divv{
+    /*background-color: tomato;*/
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: inline-block;
+    /*width: 30%;*/
+    margin-left: 40%;
+    position: relative;
+    vertical-align: middle;
+}
+#BoutonImporter{
+    color: white;
+    font-weight:500;
+    width: 120px;
+    vertical-align: middle;
+    box-shadow: none;
+    /*background-color: tomato;*/
+}
+#label{/*Le text à gauche du boutin pour uploaer*/
+    /*background-color: yellow;*/
+    margin-right: 5px;
+    vertical-align: middle;
+}
+#DivImportation{
+    /*background-color: red;*/
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 15px;
+}

@@ -1,0 +1,53 @@
+#ImageAccueil{
+    vertical-align: middle;
+    height: 60px;
+}
+#menu{
+    background-color:rgba(0, 0, 205, 0.822);
+    width: 100%;
+    margin-top: -0.5%;
+    padding-left: 1%;
+    position:fixed;
+}
+#DivImage{
+    display: inline-block;
+}
+.DivOptionsMenu{
+    background-color : rgb(87, 76, 146);
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: rgba(60, 60, 60, 0.596);
+    display: inline-block;
+}
+.OptionsMenu{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 130%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+#DivOptionMenuDeposerAnnance{
+    margin-left: 25%;
+}
+#DivOptioneMenuSeConnecter{
+    margin-left: 20%;
+}
+#ImageSeConnecter{
+    height: 30px;
+    vertical-align: middle;
+    display: inline-block;
+}
+#ImageDeposerAnnance{
+    height: 30px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+
+
+#ApresMenu{
+    padding-top: 60px;
+}

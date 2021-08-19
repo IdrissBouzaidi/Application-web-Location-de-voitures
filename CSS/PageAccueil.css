@@ -1,0 +1,136 @@
+#image_LocationDeVoitures{
+    width: 80%;
+    display: inline-block;
+}
+#FormulaireAccueil{
+    background-color:rgba(176, 224, 230, 0.575) ;
+    box-shadow: 5px 5px 5px rgba(255, 182, 193, 0.473);
+    position:absolute;
+    border-radius: 10px;
+    margin-top: 26%;
+    margin-left: 20%;
+    padding-top: 5%;
+    width: 60%;
+    height: 22%;
+}
+.formulaire{
+    background-color:rgba(250, 128, 114, 0.568);
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    height: 22%;
+    border-radius: 5px;
+    font-size: 125%;
+    box-shadow: 10px 5px 5px rgba(255, 0, 0, 0.5);
+}
+#formulaire1{
+    display: block;
+    width: 60%;
+    margin-top: -30px;
+    margin-left: -5%;
+}
+#formulaire2{
+    display: block;
+    background-color:rgba(250, 128, 114, 0.568);
+    width: 75%;
+}
+#formulaire3{
+    display: block;
+    background-color:rgba(250, 128, 114, 0.568);
+    margin-left: -28%;
+    width: 75%;
+}
+#formulaire4{
+    margin-top: 2%;
+    display: inline-block;
+    width: 40%;
+    margin-left: -5%;
+}
+#formulaire5{
+    display: inline-block;
+    width: 16%;
+    margin-left: 4%;
+}
+.PhraseDate{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 80%;
+}
+#PhraseDate1{
+    border-radius: 2px;
+    background-color: rgba(255, 239, 213, 0.473);
+    box-shadow: 10px 5px 5px rgba(255, 0, 0, 0.5);
+    margin-left: -35%;
+    display: inline-block;
+}
+#PhraseDate2{
+    border-radius: 2px;
+    background-color: rgba(255, 239, 213, 0.473);
+    box-shadow: 10px 5px 5px rgba(255, 0, 0, 0.5);
+    margin-left: -65%;
+    display: inline-block;
+}
+.divDate{
+    margin-top: 4%;
+    display: inline-block;
+}
+
+
+
+
+
+#BackgroundPublicite{
+    background-color :rgb(200, 200, 200);
+    margin-left : 10%;
+    margin-right : 10%;
+    border-color: rgb(128, 128, 128);
+    border-style: solid;
+}
+#ImagePublicite{
+    margin-left: 3.5%;
+    width: 300px;
+}
+#DivImagePublicite{
+    /*background-color : green;*/
+    display : inline-block;
+}
+#DivText1Publicite{
+    /*background-color : yellow;*/
+    margin-right:40px;
+    display : inline-block;
+}
+#DivText2Publicite{
+    /*background-color: chocolate;*/
+    display: inline-block;
+}
+#DivText3Publicite{
+    margin-top: 10px;
+    /*background-color: darkolivegreen;*/
+}
+.TitresPublicite{/*Les titres comme la marque et le pays*/
+    /*background-color: darkseagreen;*/
+    font-size: 25px;
+    color:black;
+    margin-top: 5%;
+    margin-bottom: 0%;
+    margin-left: 40px;
+    display: inline-block;
+}
+.ValeursPublicite{/*Les valeurs spécifiées de la marque et du pays ...*/
+    /*background-color: firebrick;*/
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    margin-top: 5%;
+    margin-bottom: 0%;
+    color: rgb(107, 1, 1);
+    display: inline-block;
+}
+#DH_jour{
+    font-size: 20px;
+}
+.Prix_et_Occupation_et_leurs_valeurs{
+    margin-top: 15px;
+}
+#Ligne_horizontal_Publicite{
+    margin-bottom : -0.5%;
+    margin-top : 2.5%;
+    margin-left: 7%;
+    width : 90%
+}
