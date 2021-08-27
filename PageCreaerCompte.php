@@ -12,28 +12,28 @@
     <div id = "ApresMenu">
         <div id = "BackgroundConnexion">
             <center>
-            <p class = "Text">
-                Veuillez remplir ces informations
-            </p>
-                <form>
-                    <input type = "text" class = "formulaire" placeholder = "Saisir votre Nom"><br/>
-                    <input type = "text" class = "formulaire" placeholder = "Saisir votre prénom"><br/>
-                    <input type = "email" class = "formulaire" placeholder = "Saisir une adresse électronique"><br/>
-                    <input type = "password" class = "formulaire" placeholder = "Saisir un mot de passe"><br/>
-                    <input type = "password" class = "formulaire" placeholder = "Réécrir le mot de passe à nouveau"><br/>
-                    <input type = "tel" class = "formulaire" placeholder = "Saisir votre numéro de théléphone"><br/>
+                <p class = "Text">
+                    Veuillez remplir ces informations
+                </p>
+                <form action = "PageSeConnecter.php" method = "POST" enctype = "multipart/form-data">
+                    <input type = "text" name = "nom" class = "formulaire" placeholder = "Saisir votre nom"><br/>
+                    <input type = "text" name = "prenom" class = "formulaire" placeholder = "Saisir votre prénom"><br/>
+                    <input type = "email" name = "adresse" class = "formulaire" placeholder = "Saisir une adresse électronique"><br/>
+                    <input type = "password" name = "mot_de_passe" class = "formulaire" placeholder = "Saisir un mot de passe"><br/>
+                    <input type = "password" name = "mot_de_passe_a_nouveau" class = "formulaire" placeholder = "Réécrir le mot de passe à nouveau"><br/>
+                    <input type = "tel" name = "telephone" class = "formulaire" placeholder = "Saisir votre numéro de téléphone" required pattern = "[0-9]{8,13}"><br/>
                     <div id = "DivImportation">
                         <label class = "Text" id = "label">Importez votre image</label>
-                        <input id = "BoutonImporter" Type = "file" value = "Importer" name = "ImageUploaded"/><br/>
+                        <input id = "BoutonImporter" Type = "file" name = "BoutonImporter" value = "Importer" name = "ImageUploaded"/><br/>
+                    </div>
+                    <div id = "DivConnexion">
+                        <div id = "BouttonEnvoyer">
+                            <input type = "submit" id = "BouttonConnexion" name = "BouttonConnexion" class = "formulaire" value = "Continuer">
+                        </div>
                     </div>
                 </form>
             </center>
-            <div id = "divv">
-                <form id = "BouttonEnvoyer">
-                    <input type = "submit" id = "BouttonConnexion" class = "formulaire" value = "Continuer">
-                </form>
-            </div>
         </div>
-</center>
+    </div>
 </body>
 </html>

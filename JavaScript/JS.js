@@ -9,3 +9,6 @@ function f(){
     return x;
 }
 var a = "select * from pays where codepays = ";
+function AjouterPhoto(){
+    return "PageAjouterImageVoiture.php";
+}

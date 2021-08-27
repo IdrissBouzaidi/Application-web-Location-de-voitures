@@ -1,0 +1,64 @@
+#BackgroundPublicite{
+    background-color :rgb(200, 200, 200);
+    margin-left : 10%;
+    margin-right : 10%;
+    margin-top: 1%;
+    border-color: rgb(128, 128, 128);
+    border-style: solid;
+}
+#Publicite1ereParagraphe{
+    /*background-color: brown;*/
+}
+#Publicite2emeParagraphe{
+    /*background-color : red;*/
+    border-top-style:solid;
+    border-top-color: rgb(128, 128, 128);
+    border-bottom-style:solid;
+    border-bottom-color: rgb(128, 128, 128);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#PremiereParagrapheInformations{
+    /*background-color: yellow;*/
+    width: 40%;
+    margin-left: 16%;
+    display: inline-block;
+    vertical-align: middle;
+}
+#PremiereParagrapheImage{
+    background-color: burlywood;
+    width: 200px;
+    border-radius: 50%;
+    border-style: ridge;
+    border-width: 30%;
+    vertical-align: middle;
+    display: inline-block;
+}
+#LeNom{
+    /*background-color: firebrick;*/
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: right;
+    width: 98%;
+    color: rgb(107, 1, 1);
+    font-size: 35px;
+    margin-bottom: -20px;
+}
+#ValeurTel{
+    /*background-color: blue;*/
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 0px;
+    margin-bottom: -5px;
+    font-size: 25px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+}
+#ImageTel{
+    width: 40px;
+    display: inline-block;
+    vertical-align: middle;
+}
+#Tel{
+    /*background-color: yellow;*/
+    text-align: right;
+}

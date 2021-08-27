@@ -33,12 +33,25 @@
     margin-left: 25%;
 }
 #DivOptioneMenuSeConnecter{
-    margin-left: 20%;
+    background-color: burlywood;
+    float:right;
+    margin-right: 7.5%;
+    vertical-align: middle;
+    margin-top: 6.5px;
 }
 #ImageSeConnecter{
     height: 30px;
     vertical-align: middle;
     display: inline-block;
+}
+#ImageUtilisateur{
+    background-color: brown;
+    height: 40px;
+    vertical-align: middle;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: -5px;
 }
 #ImageDeposerAnnance{
     height: 30px;

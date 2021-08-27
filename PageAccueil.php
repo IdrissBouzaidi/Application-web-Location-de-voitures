@@ -1,3 +1,21 @@
+
+<?php
+    include("UploaderImage.php");
+    if (isset($_POST["email"], $_POST["password"])){
+        $connection = new mysqli("localhost", "root", "", "applicationweblocationdevoitures");
+        $connection->set_charset("utf8");
+        mysqli_set_charset($connection, "utf8");/*Cette ligne et la ligne qui est au dessus sont les résponsables à lire les caractères accentiés*/
+        $mail = $_POST["email"];
+        $requete = $connection->query("SELECT * FROM `utilisateurs` WHERE Adresse = '".$mail."';");
+        $requete->data_seek(0);
+        $row = $requete->fetch_assoc();
+        if($_POST["password"] != $row["MotDePasse"]){
+            header('location:PageSeConnecter.php');
+            echo "Quelque chose qui ne va pas!!!!";
+        }
+        $connection = NULL;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +26,7 @@
     <?php include("Menu.php"); ?>
     <link rel = "stylesheet" href="CSS/PageAccueil.css"/>
 </head>
-    <body>
+<body>
     <center id = "ApresMenu">
         <form action = "php.php" method = "POST" id = "FormulaireAccueil">
             <select class = "formulaire" id = "formulaire1">
@@ -41,47 +59,12 @@
                         $row = $requete->fetch_assoc();
                         echo "<option style = 'background-color: rgba(230, 230, 230, 0.8);' value = " . $row['marque'] . ">" . $row['marque'] . "</option>";
                     }
+                    $connection = NULL;
                 ?>
             </select>
             <input type = "submit" value = "Envoyer"  class = "formulaire" id = "formulaire5"/>
         </form>
         <img src="Images/image de recherche.png" id = "image_LocationDeVoitures"/>
     </center>
-    <a href="PagePublicite.php" target = "blank">
-        <div id = "BackgroundPublicite">
-            <?php
-                $requete = $connection->query("select * from informations where id = 1");
-                $requete->data_seek(0);
-                $row = $requete->fetch_assoc();
-            ?>
-            <div id = "DivImagePublicite">
-                <img src = "<?php
-                    echo $row['Image'];
-                ?>"
-                id="ImagePublicite" />
-            </div>
-            <div style = "display : inline-block;">
-                <div id = "DivText1Publicite">
-                    <p class = "TitresPublicite">Pays :</p>
-                    <p class = "ValeursPublicite"><?php echo $row['Pays'];?></p><br/>
-                    <p class = "TitresPublicite">Marque :</p>
-                    <p class = "ValeursPublicite"><?php echo $row['Marque'];?></p>
-                </div>
-                <div id = "DivText2Publicite">
-                    <p class = "TitresPublicite">Ville :</p>
-                    <p class = "ValeursPublicite"><?php echo $row['Ville'];?></p><br/>
-                    <p class = "TitresPublicite">Modèle :</p>
-                    <p class = "ValeursPublicite"><?php echo $row['Modele'];?></p>
-                </div>
-                <div id = "DivText3Publicite">
-                    <p class = "TitresPublicite Prix_et_Occupation_et_leurs_valeurs">Prix   :</p>
-                    <p class = "ValeursPublicite Prix_et_Occupation_et_leurs_valeurs"><?php echo $row['Prix'];?></p>
-                    <p  class = "ValeursPublicite Prix_et_Occupation_et_leurs_valeurs" id = "DH_jour">DH / jour</p>
-                    <hr noshade align="left" id = "Ligne_horizontal_Publicite">
-                    <p class = "TitresPublicite Prix_et_Occupation_et_leurs_valeurs">Occupation :</p>
-                    <p class = "ValeursPublicite Prix_et_Occupation_et_leurs_valeurs">Disponible</p>
-                </div>
-            </div>
-        </div>
-    </a>
+    <?php include("Publicite.php"); ?>
 </body>

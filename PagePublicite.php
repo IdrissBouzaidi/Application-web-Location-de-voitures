@@ -15,25 +15,42 @@
             $connection = new mysqli("localhost", "root", "", "applicationweblocationdevoitures");
             $connection->set_charset("utf8");
             mysqli_set_charset($connection, "utf8");/*Cette ligne et la ligne qui est au dessus sont les résponsables à lire les caractères accentiés*/
-            $requete = $connection->query("select * from informations where id = 1");
-            $requete2 = $connection->query("select * from utilisateurs where Adresse in (
-                                            select AdresseUtilisateur from informations where id = 1)");
+            $requete = $connection->query("select * from informations where id = '".$_POST['id']."';");
+            $requete2 = $connection->query("select * from utilisateurs where Adresse = (SELECT AdresseUtilisateur FROM informations WHERE id = '".$_POST['id']."');");
+            $requete3 = $connection->query("select * from imagesvoitures where id = '".$_POST['id']."';");
             $requete->data_seek(0);
             $requete2->data_seek(0);
+            $requete3->data_seek(0);
             $row = $requete->fetch_assoc();
             $row2 = $requete2->fetch_assoc();
+            $row3 = $requete3->fetch_assoc();
             ?>
             <div id = "Publicite1ereParagraphe">
                 <img src = "<?php
-                    echo $row['Image'];
+                    echo $row3['CheminImage'];
                 ?>" id = "ImagePublicite" />
                 <div id = "ComptePublicite">
+                    <?php
+                        echo '
+                            <form id = "HiddenProfil" action = "PageProfil.php" method = "POST">
+                            <input type = "hidden" name = "id" value = "'.$_POST["id"].'" />
+                            ';
+                        if(isset($_POST["email"], $_POST["password"])){
+                            echo '
+                                <input type = "hidden" name = "email" value = "'.$_POST["email"].'" />
+                                <input type = "hidden" name = "password" value = "'.$_POST["password"].'" />
+                            ';
+                        }
+                        echo '</form>';
+                    ?>
+                    <a href = "#" OnClick = "document.getElementById('HiddenProfil').submit()">
                     <center>
                         <p class = "ValeursPublicite" style = "margin-left: 0%;"><?php echo $row2['Prenom'] . " " . $row2['Nom'];?></p><br/>
-                        <img src = "<?php
-                    echo $row2['Image'];
-                ?>" id = "ImageUtilisateurPublicite" />
+                            <img src = "<?php
+                            echo $row2['Image'];
+                        ?>" id = "ImageUtilisateurPublicite" />
                     </center>
+                    </a>
                 </div>
             </div>
             <div id = "Publicite2emeParagraphe">
