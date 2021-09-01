@@ -15,9 +15,17 @@
                 <p class = "Text">
                     Veuillez remplir ces informations
                 </p>
-                <form action = "PageAjouterImageVoiture.php">
-                    <select style = "width: 320px; color: rgb(128, 128, 128);" class = "formulaire" required>
-                        <option value="Choisir le pays" disabled selected style = "background-color: rgba(200, 200, 200, 255);">Choisir le pays</option>
+                <form action = "PageAjouterImageVoiture.php" method = "POST">
+                    <?php
+                        if(isset($_POST["email"], $_POST["password"])){
+                            echo '
+                                <input type = "hidden" name = "email" value = "'.$_POST["email"].'" />
+                                <input type = "hidden" name = "password" value = "'.$_POST["password"].'" />
+                            ';
+                        }
+                    ?>
+                    <select name = "Pays" style = "width: 320px; color: rgb(128, 128, 128);" class = "formulaire" required>
+                        <option value="" disabled selected style = "background-color: rgba(200, 200, 200, 255);">Choisir le pays</option>
                         <?php
                             $connection = new mysqli("localhost", "root", "", "applicationweblocationdevoitures");
                             $requete = $connection->query("select * from pays");
@@ -30,9 +38,9 @@
                             }
                         ?>
                     </select>
-                    <input type = "text" class = "formulaire" placeholder = "Saisir la ville" required pattern = "[A-Za-z_-]{2,50}"><br/>
-                    <select style = "width: 320px; color: rgb(128, 128, 128);" class = "formulaire" required>
-                        <option value="Choisir la marque" disabled selected style = "background-color: rgba(200, 200, 200, 255);">Choisir la marque</option>
+                    <input name = "Ville" type = "text" class = "formulaire" placeholder = "Saisir la ville" required pattern = "[A-Za-z0-9_-]{2,50}"><br/>
+                    <select name = "Marque" style = "width: 320px; color: rgb(128, 128, 128);" class = "formulaire" required>
+                        <option value="" disabled selected style = "background-color: rgba(200, 200, 200, 255);">Choisir la marque</option>
                         <?php
                             $requete = $connection->query("select * from marques_noms");
                             for($i = 0; $i < $requete->num_rows; $i++){
@@ -42,10 +50,10 @@
                             }
                         ?>
                     </select>
-                    <input type = "text" class = "formulaire" placeholder = "Saisir le modèle" required pattern = "[A-Za-z_-]{2,50}"><br/>
-                    <input type = "text" class = "formulaire" placeholder = "Saisir le prix/Jour" required pattern = "[0-9]{1,5}"><br/>
+                    <input name = "Modele" type = "text" class = "formulaire" placeholder = "Saisir le modèle" required pattern = "[^()'%!,=&$*+]{1,50}"><br/>
+                    <input name = "Prix" type = "text" class = "formulaire" placeholder = "Saisir le prix/Jour" required pattern = "[0-9]{1,5}"><br/>
                     <label class = "Text" id = "label">Ecrire une description sur la voiture</label><br/>
-                    <textarea class = "formulaire"></textarea><br/>
+                    <textarea name = "Description" class = "formulaire"></textarea><br/>
                     <div id = "DivConnexion">
                         <div id = "BouttonEnvoyer">
                             <input type = "submit" id = "BouttonConnexion" class = "formulaire" value = "Continuer">

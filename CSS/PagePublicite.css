@@ -3,15 +3,40 @@
     margin-left : 10%;
     margin-right : 10%;
     border-color: rgb(128, 128, 128);
+    min-width: 850px;
     border-style: solid;
 }
-#ImagePublicite{
+#divImagePublicite{
     width: 50%;
     margin-top: 1%;
-    margin-bottom: 1%;
+    margin-bottom: 0%;
     margin-left: 1.25%;
     display: inline-block;
+    /*background-color: red;*/
     vertical-align: middle;
+}
+#ImagePublicite{
+    /*background-color: blueviolet;*/
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+#FlecheGauche{
+    background-color:rgba(169, 169, 169, 0.726);
+    width: 12.5%;
+    margin-top: -80%;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 8px;
+}
+#FlecheDroite{
+    background-color:rgba(169, 169, 169, 0.726);
+    width: 12.5%;
+    margin-top: -80%;
+    margin-left: 74.06%;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 8px;
 }
 #Publicite1ereParagraphe{
     /*background-color : green;*/
@@ -24,9 +49,9 @@
     border-radius: 50%;
     border-style: ridge;
     border-width: 30%;
+    border-color: rgb(150, 150, 150);
 }
 #ComptePublicite{
-    /*background-color : blue;*/
     background-color: rgb(175, 175, 175);
     border-style: solid;
     border-color: cadetblue;
@@ -39,6 +64,17 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 #Publicite2emeParagraphe{
+    /*background-color: chocolate;*/
+    border-top-style:solid;
+    border-top-color: rgb(128, 128, 128);
+}
+#Publicite2emeParagrapheLeft{
+    /*background-color: cyan;*/
+    width: 70%;
+    min-width: 210px;
+    display: inline-block;
+}
+#Publicite3emeParagraphe{
     /*background-color : red;*/
     border-top-style:solid;
     border-top-color: rgb(128, 128, 128);
@@ -47,15 +83,15 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
-#Publicite2emeParagrapheLeft{
+#Publicite3emeParagrapheLeft{
     /*background-color : yellow;*/
-    width: 49%;
+    width: 45%;
     display : inline-block;
     vertical-align: middle;
 }
-#Publicite2emeParagrapheRight{
+#Publicite3emeParagrapheRight{
     /*background-color: chocolate;*/
-    width: 49%;
+    width: 54.25%;
     display: inline-block;
     vertical-align: middle;
 }
@@ -68,20 +104,39 @@
     margin-left: 8%;
     display: inline-block;
 }
+.TitresPublicite2{/*Les titres comme la marque et le pays*/
+    /*background-color: darkseagreen;*/
+    font-size: 155%;
+    color:black;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 5%;
+    display: inline-block;
+}
 .ValeursPublicite{/*Les valeurs spécifiées de la marque et du pays ...*/
     /*background-color: firebrick;*/
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 220%;
+    font-size: 200%;
     color: rgb(107, 1, 1);
     margin-top: 3%;
     margin-bottom: 3%;
     margin-left: 8%;
     display: inline-block;
 }
+.ValeursPublicite2{/*Les valeurs spécifiées de la marque et du pays ...*/
+    /*background-color: firebrick;*/
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 165%;
+    color: rgb(107, 1, 1);
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 1%;
+    display: inline-block;
+}
 #DH_jour{
     font-size: 124%;
 }
-#Publicite3emeParagraphe{
+#Publicite4emeParagraphe{
     /*background-color: green;*/
     font-size: 30px;
     margin-top: -20px;
@@ -97,4 +152,43 @@
     display: inline-block;
     /*background-color: firebrick;*/
     margin-bottom: -8px;
+}
+.DDivOptionsMenu{
+    /*background-color : rgb(87, 76, 146);*/
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgba(60, 60, 60, 0.596);
+    display: inline-block;
+}
+#DDivOptioneMenuSeConnecter{
+    background-color: burlywood;
+    float: right;
+    margin-right: 2%;
+    min-width: 180;
+    vertical-align: middle;
+    margin-top: 8.35px;
+    width: 25%;
+    display: inline-block;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+#IImageUtilisateur{
+    /*background-color: brown;*/
+    height: 40px;
+    vertical-align: middle;
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 5px;
+    margin-left: -5px;
+}
+.OOptionsMenu{
+    /*background-color: darkcyan;*/
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 110%;
+    margin-top: 4%;
+    margin-bottom: 4%;
 }

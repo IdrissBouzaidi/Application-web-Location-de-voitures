@@ -1,0 +1,79 @@
+#BackgroundPublicite{
+    background-color :rgb(200, 200, 200);
+    margin-top: 15px;
+    margin-left : 10%;
+    margin-right : 10%;
+    min-width: 800px;
+    border-color: rgb(128, 128, 128);
+    border-style: solid;
+}
+#ImagePublicite{
+    /*background-color:rgb(107, 1, 1);*/
+    margin-left: 2%;
+    vertical-align: middle;
+    display: inline-block;
+    width: 35%;
+}
+#DivNonImage{
+    /*background-color: blue;*/
+    vertical-align: middle;
+    display: inline-block;
+    width: 62%;
+}
+#DivText1Publicite{
+    /*background-color : yellow;*/
+    width: 46%;
+    vertical-align: middle;
+    display : inline-block;
+}
+#DivText2Publicite{
+    /*background-color: chocolate;*/
+    width: 53%;
+    vertical-align: middle;
+    display: inline-block;
+}
+#DivText3Publicite{
+    margin-top: 10px;
+    /*background-color: darkolivegreen;*/
+}
+.TitresPublicite{/*Les titres comme la marque et le pays*/
+    /*background-color: darkseagreen;*/
+    font-size: 25px;
+    color:black;
+    margin-top: 5%;
+    margin-bottom: 0%;
+    margin-left: 20px;
+    display: inline-block;
+}
+.ValeursPublicite{/*Les valeurs spécifiées de la marque et du pays ...*/
+    /*background-color: firebrick;*/
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    margin-top: 5%;
+    margin-bottom: 0%;
+    color: rgb(107, 1, 1);
+    display: inline-block;
+}
+#DH_jour{
+    font-size: 20px;
+}
+.Prix_et_Occupation_et_leurs_valeurs{
+    /*background-color: red;*/
+    vertical-align: middle;
+    margin-top: 10px;
+}
+#Ligne_horizontal_Publicite{
+    margin-bottom : -0.5%;
+    margin-top : 2.5%;
+    margin-left: 7%;
+    width : 90%;
+}
+#DivLigneOccupation{
+    /*background-color: white;*/
+    height: 60px;
+    vertical-align: middle;
+}
+#ImageDisponible{
+    height: 60px;
+    vertical-align: middle;
+}

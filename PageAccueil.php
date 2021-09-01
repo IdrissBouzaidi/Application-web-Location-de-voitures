@@ -1,10 +1,9 @@
-
 <?php
     include("UploaderImage.php");
+    $connection = new mysqli("localhost", "root", "", "applicationweblocationdevoitures");
+    $connection->set_charset("utf8");
+    mysqli_set_charset($connection, "utf8");
     if (isset($_POST["email"], $_POST["password"])){
-        $connection = new mysqli("localhost", "root", "", "applicationweblocationdevoitures");
-        $connection->set_charset("utf8");
-        mysqli_set_charset($connection, "utf8");/*Cette ligne et la ligne qui est au dessus sont les résponsables à lire les caractères accentiés*/
         $mail = $_POST["email"];
         $requete = $connection->query("SELECT * FROM `utilisateurs` WHERE Adresse = '".$mail."';");
         $requete->data_seek(0);
@@ -13,7 +12,6 @@
             header('location:PageSeConnecter.php');
             echo "Quelque chose qui ne va pas!!!!";
         }
-        $connection = NULL;
     }
 ?>
 <!DOCTYPE html>
@@ -28,12 +26,11 @@
 </head>
 <body>
     <center id = "ApresMenu">
-        <form action = "php.php" method = "POST" id = "FormulaireAccueil">
-            <select class = "formulaire" id = "formulaire1">
-                <option value="Choisir le pays" disabled selected style = "background-color: rgba(200, 200, 200, 255);">Choisir le pays</option>
+        <form action = "PageAccueil.php" method = "POST" id = "FormulaireAccueil">
+            <select class = "formulaire" id = "formulaire1" name = "Pays" required>
+                <option value="" disabled selected style = "background-color: rgba(200, 200, 200, 255);">Choisir le pays</option>
                 <?php
-                    $connection = new mysqli("localhost", "root", "", "applicationweblocationdevoitures");
-                    $requete = $connection->query("select * from pays");
+                    $requete = $connection->query("SELECT * FROM `pays`");
                     for($i = 0; $i < $requete->num_rows; $i++){
                         $requete->data_seek($i);
                         $row = $requete->fetch_assoc();
@@ -43,28 +40,57 @@
             </select>
             <div class = "divDate">
                 <div class = "PhraseDate" id = "PhraseDate1">Date de retrait</div>
-                <input type = "date" placeholder = "Date" id = "formulaire2" class = "formulaire"/><br/>
+                <input type = "date" placeholder = "Date" id = "formulaire2" class = "formulaire" name = "DateRetrait"/><br/>
             </div>
             <div class = "divDate">
                 <div class = "PhraseDate" id = "PhraseDate2">Date de retour</div>
-                <input type = "date" placeholder = "Date" id = "formulaire3" class = "formulaire"/><br/>
+                <input type = "date" placeholder = "Date" id = "formulaire3" class = "formulaire" name = "DateRetour"/><br/>
             </div>
             <br/>
-            <select class = "formulaire" id = "formulaire4">
-                <option value="Choisir la marque" disabled selected style = "background-color: rgba(200, 200, 200, 255);">Choisir la marque</option>
+            <select class = "formulaire" id = "formulaire4" name = "Marque">
+                <option value="" disabled selected style = "background-color: rgba(200, 200, 200, 255);">Choisir la marque</option>
                 <?php
-                    $requete = $connection->query("select * from marques_noms order by 'marque'");
+                    $requete = $connection->query("SELECT * FROM `marques_noms` ORDER BY 'Marque'");
                     for($i = 0; $i < $requete->num_rows; $i++){
                         $requete->data_seek($i);
                         $row = $requete->fetch_assoc();
-                        echo "<option style = 'background-color: rgba(230, 230, 230, 0.8);' value = " . $row['marque'] . ">" . $row['marque'] . "</option>";
+                        echo "<option style = 'background-color: rgba(230, 230, 230, 0.8);' value = " . $row['Marque'] . ">" . $row['Marque'] . "</option>";
                     }
-                    $connection = NULL;
                 ?>
             </select>
+            <?php
+                if(isset($_POST["email"], $_POST["password"])){
+                    echo '
+                        <input type = "hidden" name = "email" value = "'.$_POST["email"].'" />
+                        <input type = "hidden" name = "password" value = "'.$_POST["password"].'" />
+                    ';
+                }
+            ?>
             <input type = "submit" value = "Envoyer"  class = "formulaire" id = "formulaire5"/>
         </form>
         <img src="Images/image de recherche.png" id = "image_LocationDeVoitures"/>
     </center>
-    <?php include("Publicite.php"); ?>
+    <?php
+        include("Publicite.php");
+        if(isset($_POST['Pays'])){
+            $Condition = "Pays = '".$_POST['Pays']."'";
+            if($_POST['DateRetrait']){
+                $Condition = $Condition . " && (DateDebutDisponible = NULL || DateDebutDisponible <= '".$_POST['DateRetrait']."')";
+            }
+            if($_POST['DateRetour']){
+                $Condition = $Condition . " && (DateFinDisponible = NULL || DateFinDisponible >= '".$_POST['DateRetour']."')";
+            }
+            if(isset($_POST['Marque'])){
+                $Condition = $Condition . " && Marque = '".$_POST['Marque']."'";
+            }
+            $RequeteFiltre = $connection->query("SELECT * FROM `informations` WHERE $Condition;");
+            for($i = 0; $i < $RequeteFiltre->num_rows; $i++){
+                $RequeteFiltre->data_seek($i);
+                $RowFiltre = $RequeteFiltre->fetch_assoc();
+                Publicite($RowFiltre['id']);
+            }
+        }
+        $connection = NULL;
+    ?>
 </body>
+</html>

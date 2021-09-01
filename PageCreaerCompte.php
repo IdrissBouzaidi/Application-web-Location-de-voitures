@@ -16,15 +16,15 @@
                     Veuillez remplir ces informations
                 </p>
                 <form action = "PageSeConnecter.php" method = "POST" enctype = "multipart/form-data">
-                    <input type = "text" name = "nom" class = "formulaire" placeholder = "Saisir votre nom"><br/>
-                    <input type = "text" name = "prenom" class = "formulaire" placeholder = "Saisir votre prénom"><br/>
-                    <input type = "email" name = "adresse" class = "formulaire" placeholder = "Saisir une adresse électronique"><br/>
-                    <input type = "password" name = "mot_de_passe" class = "formulaire" placeholder = "Saisir un mot de passe"><br/>
-                    <input type = "password" name = "mot_de_passe_a_nouveau" class = "formulaire" placeholder = "Réécrir le mot de passe à nouveau"><br/>
+                    <input type = "text" name = "nom" class = "formulaire" placeholder = "Saisir votre nom" required pattern = "[^()'%!,=&$*+]{1,50}"><br/>
+                    <input type = "text" name = "prenom" class = "formulaire" placeholder = "Saisir votre prénom" required pattern = "[^()'%!,=&$*+]{1,50}"><br/>
+                    <input type = "email" name = "adresse" class = "formulaire" placeholder = "Saisir une adresse électronique" required><br/>
+                    <input type = "password" name = "mot_de_passe" class = "formulaire" placeholder = "Saisir un mot de passe" required pattern = "[^()'%!,=&$*+]{1,50}"><br/>
+                    <input type = "password" name = "mot_de_passe_a_nouveau" class = "formulaire" placeholder = "Réécrir le mot de passe à nouveau" required pattern = "[^()'%!,=&$*+]{1,50}"><br/>
                     <input type = "tel" name = "telephone" class = "formulaire" placeholder = "Saisir votre numéro de téléphone" required pattern = "[0-9]{8,13}"><br/>
                     <div id = "DivImportation">
                         <label class = "Text" id = "label">Importez votre image</label>
-                        <input id = "BoutonImporter" Type = "file" name = "BoutonImporter" value = "Importer" name = "ImageUploaded"/><br/>
+                        <input id = "BoutonImporter" Type = "file" name = "BoutonImporter" value = "Importer" name = "ImageUploaded" required/><br/>
                     </div>
                     <div id = "DivConnexion">
                         <div id = "BouttonEnvoyer">

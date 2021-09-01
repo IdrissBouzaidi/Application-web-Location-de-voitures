@@ -2,15 +2,15 @@
    function UploaderImage($nameFile, $nameSubmit, $id){//nameFile : <input ... name = "..."
                                                    //id : le nom que l'image va prendre dans son répertoire.
       if(isset($_POST[$nameSubmit])){
-         $MaxSize = 600000;
+         $MaxSize = 1000000;
          $ValidFormats = array('.jpeg', '.jpg', '.png', '.gif');
-         if($_FILES[$nameFile]['error'] > 0){
-            echo "Une erreur s'est survenu lors du transfert";
-            die;
-         }
          $FileSize = $_FILES[$nameFile]['size'];
          if($FileSize > $MaxSize){
-            echo "Le fichier est trop volumineux !!";
+            echo "L'image' est trop volumineuse !!";
+            die;
+         }
+         if($_FILES[$nameFile]['error'] > 0){
+            echo "Une erreur s'est survenu lors du transfert de l'image";
             die;
          }
          $FileName = $_FILES[$nameFile]['name'];
@@ -20,7 +20,7 @@
             die;
          }
          $tmlName = $_FILES[$nameFile]['tmp_name'];
-         $fileName = "Images/Voitures/" . $id . $fileExt;
+         $fileName = "Images/" . $id . $fileExt;
          $resultat = move_uploaded_file($tmlName, $fileName);
          if(!$resultat){
             echo "Transfert terminé !!";
