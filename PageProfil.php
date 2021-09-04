@@ -1,3 +1,25 @@
+<?php
+    if(isset($_POST["Numero"])){
+        $Numero = $_POST["Numero"];
+    }
+    else{
+        $Numero = 0;
+    }
+    echo '
+        <form id = "PageSuivante" action = "PageProfil.php" method = "POST">
+            <input type = "hidden" name = "Numero" value = "'.($Numero + 5).'" />
+        ';
+        if(isset($_POST["email"], $_POST["password"])){
+            echo '
+                <input type = "hidden" name = "email" value = "'.$_POST["email"].'" />
+                <input type = "hidden" name = "password" value = "'.$_POST["password"].'" />
+            ';
+        }
+        if(isset($_POST["id"])){
+            echo '<input type = "hidden" name = "id" value = "'.$_POST["id"].'" />';
+        }
+    echo '</form>';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,16 +148,13 @@
             </div>
         </div>
     </div>
-    <script>
-        var i = 0;
-    </script>
     <?php
             include("Publicite.php");
             if(isset($_POST['id'])){
                 $RequeteFiltre = $connection->query("SELECT * FROM `informations` WHERE AdresseUtilisateur = (SELECT AdresseUtilisateur FROM `informations` WHERE id = '$_POST[id]');");
             }
             else{
-                $RequeteFiltre = $connection->query("SELECT * FROM `informations` WHERE AdresseUtilisateur = '$_POST[email]';");
+                $RequeteFiltre = $connection->query("SELECT * FROM `informations` WHERE AdresseUtilisateur = '$_POST[email]' ORDER BY NombreVisites DESC LIMIT 5 OFFSET $Numero;");
             }
             for($i = 0; $i < $RequeteFiltre->num_rows; $i++){
                 $RequeteFiltre->data_seek($i);
@@ -144,4 +163,46 @@
             }
         }
     ?>
+    <style>
+#DivAutresPublicites{
+    background-color : rgb(200, 200, 200);
+    border-color: rgb(150, 150, 150);
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 7.5px;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+    display: inline-block;
+}
+#ImageAutresPublicites{
+    /*background-color: green;*/
+    height: 25px;
+    display: inline-block;
+    margin-top: 1px;
+    margin-bottom: -3px;
+}
+#AutresPublicites{
+    /*background-color: red;*/
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: -12px;
+    margin-bottom: 1px;
+}
+</style>
+    <center id = "CenterBoutonAjouterBublicite">
+        <div id = "DivAutresPublicites">
+            <a href = "#" OnClick = "document.getElementById('PageSuivante').submit()" style = "text-decoration: none;">
+                <img src = "Images/AjouterPlusDePublicites.png" id = "ImageAutresPublicites"/>
+                <p id = "AutresPublicites">Page suivante</p>
+            </a>
+        </div>
+    </center>
 </body>
+<?php
+    if($RequeteFiltre->num_rows < 5){
+        echo "<script> CenterBoutonAjouterBublicite.innerHTML = ''; </script>";
+    }
+    $connection = NULL;
+?>

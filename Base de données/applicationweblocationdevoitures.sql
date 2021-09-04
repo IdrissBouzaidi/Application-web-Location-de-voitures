@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 01 sep. 2021 à 16:59
+-- Généré le :  Dim 05 sep. 2021 à 00:57
 -- Version du serveur :  5.7.17
 -- Version de PHP :  5.6.30
 
@@ -245,7 +245,23 @@ INSERT INTO `imagesvoitures` (`Num`, `id`, `CheminImage`) VALUES
 (204, 68, 'Images/Voitures/204.png'),
 (205, 69, 'Images/Voitures/205.png'),
 (206, 69, 'Images/Voitures/206.png'),
-(207, 69, 'Images/Voitures/207.png');
+(207, 69, 'Images/Voitures/207.png'),
+(216, 70, 'Images/Voitures/216.jpg'),
+(211, 70, 'Images/Voitures/211.jpg'),
+(212, 70, 'Images/Voitures/212.jpg'),
+(213, 70, 'Images/Voitures/213.jpg'),
+(214, 70, 'Images/Voitures/214.jpg'),
+(215, 70, 'Images/Voitures/215.jpg'),
+(210, 70, 'Images/Voitures/210.jpg'),
+(209, 70, 'Images/Voitures/209.jpg'),
+(208, 70, 'Images/Voitures/208.jpg'),
+(217, 71, 'Images/Voitures/217.jpg'),
+(218, 72, 'Images/Voitures/218.jpg'),
+(219, 72, 'Images/Voitures/219.jpg'),
+(220, 72, 'Images/Voitures/220.jpg'),
+(221, 72, 'Images/Voitures/221.jpg'),
+(222, 72, 'Images/Voitures/222.jpg'),
+(223, 72, 'Images/Voitures/223.jpg');
 
 -- --------------------------------------------------------
 
@@ -272,16 +288,16 @@ CREATE TABLE `informations` (
 --
 
 INSERT INTO `informations` (`id`, `AdresseUtilisateur`, `Marque`, `Modele`, `DateDebutDisponible`, `DateFinDisponible`, `Pays`, `Ville`, `Prix`, `Description`, `NombreVisites`) VALUES
-(1, 'idriss.monkey.d@gmail.com', 'BMW', 'X1', NULL, '2021-08-13', 'Morocco', 'Casablanca', 300, 'Bonjour à vous, je vous propose ma voiture, qui est BMW X1, et je vous propose aussi un bon prix qui est 300DH/jour, j\'en suis sûr que vous ne pouvez pas trouver un prix convenable que celui là. Et donc qu\'est ce que vous attendez, vous pouvez m\'appeler dès maintenant.', 19),
-(2, 'idriss.monkey.d@gmail.com', 'BMW', 'M5', '2021-09-05', NULL, 'Morocco', 'Casablanca', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 6),
+(1, 'idriss.monkey.d@gmail.com', 'BMW', 'X1', '2021-09-16', '2021-09-26', 'Morocco', 'Casablanca', 300, 'Bonjour à vous, je vous propose ma voiture, qui est BMW X1, et je vous propose aussi un bon prix qui est 300DH/jour, j\'en suis sûr que vous ne pouvez pas trouver un prix convenable que celui là. Et donc qu\'est ce que vous attendez, vous pouvez m\'appeler dès maintenant.', 26),
+(2, 'idriss.monkey.d@gmail.com', 'BMW', 'M5', '2021-09-05', NULL, 'Morocco', 'Casablanca', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 9),
 (3, 'anass.bouzaidi@hotmail.com', 'BMW', 'M5', NULL, NULL, 'Morocco', 'Fés', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 1),
-(4, 'Alfie.Allen@gmail.com', 'BMW', 'Série 1', NULL, NULL, 'Morocco', 'Tanger', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 5),
+(4, 'Alfie.Allen@gmail.com', 'BMW', 'Série 1', NULL, NULL, 'Morocco', 'Tanger', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 6),
 (5, 'Aidan.Gillen@gmail.com', 'BMW', 'Série 1', NULL, NULL, 'Morocco', 'Marrakech', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 1),
 (6, 'kamal.arif@gmail.com', 'BMW', 'Série 2 Active Tourer', NULL, NULL, 'Morocco', 'Salé', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 1),
-(7, 'Esme.Bianco@gmail.com', 'BMW', 'Série 2 Active Tourer', NULL, NULL, 'Morocco', 'Meknès', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
-(8, 'Isaac.Hempstead-Wright@gmail.com', 'BMW', 'Série 2 Cabriolet', NULL, NULL, 'Morocco', 'Rabat', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 1),
+(7, 'Esme.Bianco@gmail.com', 'BMW', 'Série 2 Active Tourer', NULL, NULL, 'Morocco', 'Meknès', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 1),
+(8, 'Isaac.Hempstead-Wright@gmail.com', 'BMW', 'Série 2 Cabriolet', NULL, NULL, 'Morocco', 'Rabat', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 2),
 (9, 'Jack.Gleeson@gmail.com', 'BMW', 'Série 2 Cabriolet', NULL, NULL, 'Morocco', 'Oujda', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
-(10, 'Jason.Momoa@gmail.com', 'BMW', 'Série 2 Coupé', NULL, NULL, 'Morocco', 'Kénitra', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 1),
+(10, 'Jason.Momoa@gmail.com', 'BMW', 'Série 2 Coupé', NULL, NULL, 'Morocco', 'Kénitra', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 2),
 (11, 'Joel.Fry@gmail.com', 'BMW', 'Série 2 Coupé', NULL, NULL, 'Morocco', 'Agadir', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (12, 'Kit.Harington@gmail.com', 'BMW', 'Série 2 Gran Coupé', NULL, NULL, 'Morocco', 'Tétouan', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (13, 'Maisie.Williams@mail.com', 'BMW', 'Série 2 Gran Coupé', NULL, NULL, 'Morocco', 'Témara', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
@@ -294,7 +310,7 @@ INSERT INTO `informations` (`id`, `AdresseUtilisateur`, `Marque`, `Modele`, `Dat
 (20, 'Sean.Bean@gmail.Com', 'BMW', 'Série 3 Touring', NULL, NULL, 'Morocco', 'Rabat', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (21, 'Sophie.Turner@gmail.com', 'BMW', 'Série 3 Touring', NULL, NULL, 'Morocco', 'Oujda', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (22, 'Thomas.Brodie-Sangster@gmail.com', 'BMW', 'Série 4', NULL, NULL, 'Morocco', 'Kénitra', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
-(23, 'idriss.monkey.d@gmail.com', 'BMW', 'Série 4', '2021-09-16', '2022-12-01', 'Morocco', 'Agadir', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 5),
+(23, 'idriss.monkey.d@gmail.com', 'BMW', 'Série 4', '2021-09-16', '2022-12-01', 'Morocco', 'Agadir', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 6),
 (24, 'anass.bouzaidi@hotmail.com', 'BMW', 'Série 4 Cabriolet', NULL, NULL, 'Morocco', 'Tétouan', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (25, 'Alfie.Allen@gmail.com', 'BMW', 'Série 4 Cabriolet', NULL, NULL, 'Morocco', 'Témara', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (26, 'Aidan.Gillen@gmail.com', 'BMW', 'Série 4 Gran Coupé', NULL, NULL, 'Morocco', 'Safi', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 2),
@@ -306,7 +322,7 @@ INSERT INTO `informations` (`id`, `AdresseUtilisateur`, `Marque`, `Modele`, `Dat
 (32, 'Joel.Fry@gmail.com', 'BMW', 'Série 5 Touring', NULL, NULL, 'Morocco', 'Tanger', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (33, 'Kit.Harington@gmail.com', 'BMW', 'Série 5 Touring', NULL, NULL, 'Morocco', 'Marrakech', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (34, 'Maisie.Williams@mail.com', 'BMW', 'Série 6 Coupé', NULL, NULL, 'Morocco', 'Salé', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
-(35, 'Michiel.Huisman@gmail.com', 'BMW', 'Série 6 Coupé', NULL, NULL, 'Morocco', 'Meknès', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
+(35, 'Michiel.Huisman@gmail.com', 'BMW', 'Série 6 Coupé', NULL, NULL, 'Morocco', 'Meknès', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 1),
 (36, 'Nikolaj.Coster-Waldau@gmail.com', 'BMW', 'Série 6 Gran Turismo', NULL, NULL, 'Morocco', 'Rabat', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (37, 'Nonso.Anozie@gmail.com', 'BMW', 'Série 6 Gran Turismo', NULL, NULL, 'Morocco', 'Oujda', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (38, 'Pedro.Pascal@gmail.com', 'BMW', 'Série 7 Berline', NULL, NULL, 'Morocco', 'Kénitra', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
@@ -315,10 +331,10 @@ INSERT INTO `informations` (`id`, `AdresseUtilisateur`, `Marque`, `Modele`, `Dat
 (41, 'Sean.Bean@gmail.Com', 'BMW', 'Série 7 Limousine', NULL, NULL, 'Morocco', 'Témara', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (42, 'Sophie.Turner@gmail.com', 'BMW', 'Série 8 Gran Coupe', NULL, NULL, 'Morocco', 'Safi', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (43, 'Thomas.Brodie-Sangster@gmail.com', 'BMW', 'Série 8 Gran Coupe', NULL, NULL, 'Morocco', 'Mohammédia', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
-(44, 'idriss.monkey.d@gmail.com', 'BMW', 'X1', NULL, NULL, 'Morocco', 'Khouribga', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 1),
+(44, 'idriss.monkey.d@gmail.com', 'BMW', 'X1', NULL, NULL, 'Morocco', 'Khouribga', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 2),
 (45, 'anass.bouzaidi@hotmail.com', 'BMW', 'X1', NULL, NULL, 'Morocco', 'El Jadida', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (46, 'Alfie.Allen@gmail.com', 'BMW', 'X2', NULL, NULL, 'Morocco', 'Béni Mellal', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 1),
-(47, 'Aidan.Gillen@gmail.com', 'BMW', 'X2', NULL, NULL, 'Morocco', 'Nador', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 2),
+(47, 'Aidan.Gillen@gmail.com', 'BMW', 'X2', NULL, NULL, 'Morocco', 'Nador', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 3),
 (48, 'kamal.arif@gmail.com', 'BMW', 'X3', NULL, NULL, 'Morocco', 'Taza', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (49, 'Esme.Bianco@gmail.com', 'BMW', 'X3', NULL, NULL, 'Morocco', 'Khémisset', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (50, 'Isaac.Hempstead-Wright@gmail.com', 'BMW', 'X4', NULL, NULL, 'Morocco', 'Casablanca', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
@@ -336,11 +352,14 @@ INSERT INTO `informations` (`id`, `AdresseUtilisateur`, `Marque`, `Modele`, `Dat
 (62, 'Sean.Bean@gmail.Com', 'BMW', 'i3s', NULL, NULL, 'Morocco', 'Safi', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (63, 'Sophie.Turner@gmail.com', 'BMW', 'i3s', NULL, NULL, 'Morocco', 'Mohammédia', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (64, 'Thomas.Brodie-Sangster@gmail.com', 'BMW', 'i8', NULL, NULL, 'Morocco', 'Khouribga', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
-(65, 'idriss.monkey.d@gmail.com', 'BMW', 'i8', NULL, NULL, 'Morocco', 'El Jadida', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 6),
+(65, 'idriss.monkey.d@gmail.com', 'BMW', 'i8', NULL, NULL, 'Morocco', 'El Jadida', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 8),
 (66, 'anass.bouzaidi@hotmail.com', 'BMW', 'i8 Coupé', NULL, NULL, 'Morocco', 'Béni Mellal', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (67, 'Alfie.Allen@gmail.com', 'BMW', 'i8 Coupé', NULL, NULL, 'Morocco', 'Nador', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
 (68, 'Aidan.Gillen@gmail.com', 'BMW', 'i8 Roadster', NULL, NULL, 'Morocco', 'Taza', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 1),
-(69, 'kamal.arif@gmail.com', 'BMW', 'i8 Roadster ', NULL, NULL, 'Morocco', 'Khémisset', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0);
+(69, 'kamal.arif@gmail.com', 'BMW', 'i8 Roadster ', NULL, NULL, 'Morocco', 'Khémisset', 500, 'Bonjour, je vous propose ma voiture avec un prix convenable', 0),
+(70, 'meliodas.tsumi@gmail.com', 'ALFA ROMEO', 'MiTo', NULL, NULL, 'Morocco', 'Casablanca', 550, 'Bonjour, je vous propose ma voiture qui est de modèle MiTo, quelque chose de rare à voir, et avec un prix convenable, qu\'on ne trouve pas souvent à chaque jour. En tout cas, pour me contacter, vous pouvez utiliser mon numéro de téléphone.', 4),
+(71, 'meliodas.tsumi@gmail.com', 'DACIA', 'Dokker', NULL, NULL, 'Morocco', 'Rabat', 320, 'Voici ma voiture, j\'espère qu\'elle va vous plaire!', 2),
+(72, 'idriss.monkey.d@gmail.com', 'TOYOTA', 'GT86', NULL, NULL, 'United_States_of_America', 'New York', 750, 'Voici ma voiture Toyota de modèle GT86. si vous voulez en savor plus, vous pouvez me contacter', 2);
 
 -- --------------------------------------------------------
 
@@ -718,7 +737,8 @@ INSERT INTO `utilisateurs` (`id`, `Adresse`, `MotDePasse`, `Nom`, `Prenom`, `Tel
 (19, 'Richard.Madden@gmail.com', '1234567890', 'Madden', 'Richard', '0512365426', 'Images/Utilisateurs/19.jpg'),
 (20, 'Sean.Bean@gmail.Com', '1234567890', 'Bean', 'Sean', '0541235462', 'Images/Utilisateurs/20.jpg'),
 (21, 'Sophie.Turner@gmail.com', '1234567890', 'Turner', 'Sophie', '0654123541', 'Images/Utilisateurs/21.jpg'),
-(22, 'Thomas.Brodie-Sangster@gmail.com', '1234567890', 'Brodie-Sangster', 'Thomas', '0547859641', 'Images/Utilisateurs/22.jpg');
+(22, 'Thomas.Brodie-Sangster@gmail.com', '1234567890', 'Brodie-Sangster', 'Thomas', '0547859641', 'Images/Utilisateurs/22.jpg'),
+(23, 'meliodas.tsumi@gmail.com', '1234567890', 'Rage', 'meliodas', '0655112233', 'Images/Utilisateurs/23.jpg');
 
 --
 -- Index pour les tables déchargées

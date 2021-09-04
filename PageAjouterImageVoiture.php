@@ -11,13 +11,19 @@
         $requeteA->data_seek(0);
         $rowA = $requeteA->fetch_assoc();
         if(!($_POST["Pays"] == $rowA["Pays"] && $_POST["Ville"] == $rowA["Ville"] && $_POST["Marque"] == $rowA["Marque"] && $_POST["Modele"] == $rowA["Modele"] && $_POST["Prix"] == $rowA["Prix"] && $_POST["Description"] == $rowA["Description"])){
-            $connection->query("INSERT into informations VALUES($idd, '$_POST[email]', '$_POST[Marque]', '$_POST[Modele]', '2001/01/31' , '$_POST[Pays]', '$_POST[Ville]', '$_POST[Prix]', '$_POST[Description]', 0);");
+            $description = $_POST['Description'];
+            $description = str_replace("'", "\'", $description);
+            $connection->query("INSERT into informations VALUES($idd, '$_POST[email]', '$_POST[Marque]', '$_POST[Modele]', NULL, NULL , '$_POST[Pays]', '$_POST[Ville]', '$_POST[Prix]', '$description', 0);");
             $id = $row['id'] + 1;
         }
         else{
             $id = $row['id'];
         }
         $connection = NULL;
+        $PremiereImage = 0;//Cette variable prend 0 si aucune voiture n'est encore uploadée, et 1 sinon.
+    }
+    else{
+        $PremiereImage = 1;
     }
 ?>
 <!DOCTYPE html>
@@ -41,11 +47,12 @@
                     <?php
                         if (isset($id) || isset($_POST["id"])){
                             if(isset($_POST["id"])){
-                                $id = isset($_POST["id"]);
+                                $id = $_POST["id"];
                             }
                             echo '<input type = "hidden" name = "id" value = "'.$id.'" />';
-                            echo "id = " . $id;
                         }
+                        echo '<input type = "hidden" name = "email" value = "'.$_POST["email"].'" />';
+                        echo '<input type = "hidden" name = "password" value = "'.$_POST["password"].'" />';
                     ?>
                     <div id = "DivImportation">
                         <label class = "Text">Importez vos photos</label>
@@ -55,17 +62,24 @@
                         <input type = "submit" name = "Submit1" id = "SubmetAjouterUneAutre" class = "formulaire" value = "Ajouter l'image" />
                     </div>
                 </form>
-                <form action = "PageAccueil.php">
+                <?php
+                    if($PremiereImage == 1){
+                ?>
+                <form action = "PageAccueil.php" method = "POST" enctype="multipart/form-data">
                     <div id = "BouttonEnvoyer">
                         <input type = "submit" name = "Submit2" class = "formulaire" value = "Terminer" />
                     </div>
+                <?php
+                    echo '<input type = "hidden" name = "email" value = "'.$_POST["email"].'" />';
+                    echo '<input type = "hidden" name = "password" value = "'.$_POST["password"].'" />';
+                }
+                ?>
                 </form>
             </center>
         </div>
     </div>
     <?php
         if(isset($_POST["Submit1"])){
-            echo "</br>Rah " . $_POST["id"];
             $connection = new mysqli("localhost", "root", "", "applicationweblocationdevoitures");
             $connection->set_charset("utf8");
             mysqli_set_charset($connection, "utf8");/*Cette ligne et la ligne qui est au dessus sont les résponsables à lire les caractères accentiés*/
@@ -73,7 +87,6 @@
             $requete->data_seek(0);
             $row = $requete->fetch_assoc();
             $Idd = $row["Num"] + 1;
-            echo "<br/>Id = " . $Idd;
             $image = UploaderImage("BoutonImporter", "Submit1", "Voitures/" . $Idd);
             $connection->query("INSERT into imagesvoitures VALUES($Idd, '$_POST[id]', '$image');");
             $connection = NULL;

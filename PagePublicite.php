@@ -28,7 +28,7 @@
             mysqli_set_charset($connection, "utf8");/*Cette ligne et la ligne qui est au dessus sont les résponsables à lire les caractères accentiés*/
             $requete = $connection->query("select * from informations where id = '".$_POST['id']."';");
             $requete2 = $connection->query("select * from utilisateurs where Adresse = (SELECT AdresseUtilisateur FROM informations WHERE id = '".$_POST['id']."');");
-            $requete3 = $connection->query("select * from imagesvoitures where id = '".$_POST['id']."';");
+            $requete3 = $connection->query("select * from imagesvoitures where id = '".$_POST['id']."' ORDER BY NUM;");
             $requete->data_seek(0);
             $requete2->data_seek(0);
             $row = $requete->fetch_assoc();
@@ -73,7 +73,7 @@
                     }
                 }
                 var m_initial = Number(a.substring(debut, fin));
-                function MouvoirGauche(i){
+                function MouvoirGauche(){
                     for(var i = 0; i<a.length; i++){
                         if(a[i] == '/'){
                             debut = i+1;
@@ -86,7 +86,7 @@
                     a = a.substring(0, debut) + m.toString(10) + a.substring(fin, a.length);
                     DivPourFleche.innerHTML = '<img src = "' + a + '" id = "ImagePublicite" />';
                 }
-                function MouvoirDroite(i){
+                function MouvoirDroite(){
                     for(var i = 0; i<a.length; i++){
                         if(a[i] == '/'){
                             debut = i+1;

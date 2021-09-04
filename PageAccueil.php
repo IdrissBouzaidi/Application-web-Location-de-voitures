@@ -1,5 +1,6 @@
 <?php
     include("UploaderImage.php");
+    include("Publicite.php");
     $connection = new mysqli("localhost", "root", "", "applicationweblocationdevoitures");
     $connection->set_charset("utf8");
     mysqli_set_charset($connection, "utf8");
@@ -13,6 +14,56 @@
             echo "Quelque chose qui ne va pas!!!!";
         }
     }
+    if(isset($_POST["Numero"])){
+        $Numero = $_POST["Numero"];
+    }
+    else{
+        $Numero = 0;
+    }
+    echo '
+        <form id = "PageSuivante" action = "PageAccueil.php" method = "POST">
+            <input type = "hidden" name = "Numero" value = "'.($Numero + 5).'" />
+        ';
+        if(isset($_POST['Pays'])){
+            echo '<input type = "hidden" name = "Pays" value = "'.$_POST['Pays'].'" />';
+        }
+        if(isset($_POST['DateRetrait'])){
+            echo '<input type = "hidden" name = "DateRetrait" value = "'.$_POST['DateRetrait'].'" />';
+        }
+        if(isset($_POST['DateRetour'])){
+            echo '<input type = "hidden" name = "DateRetour" value = "'.$_POST['DateRetour'].'" />';
+        }
+        if(isset($_POST['Marque'])){
+            echo '<input type = "hidden" name = "Marque" value = "'.$_POST['Marque'].'" />';
+        }
+        if(isset($_POST["email"], $_POST["password"])){
+            echo '
+                <input type = "hidden" name = "email" value = "'.$_POST["email"].'" />
+                <input type = "hidden" name = "password" value = "'.$_POST["password"].'" />
+            ';
+        }
+    echo '</form>';
+    function AjouterPublicites($n, $connection){
+        if(isset($_POST['Pays'])){
+            $Condition = "Pays = '".$_POST['Pays']."'";
+            if($_POST['DateRetrait']){
+                $Condition = $Condition . " && (DateDebutDisponible = NULL || DateDebutDisponible <= '".$_POST['DateRetrait']."')";
+            }
+            if($_POST['DateRetour']){
+                $Condition = $Condition . " && (DateFinDisponible = NULL || DateFinDisponible >= '".$_POST['DateRetour']."')";
+            }
+            if(isset($_POST['Marque'])){
+                $Condition = $Condition . " && Marque = '".$_POST['Marque']."'";
+            }
+            $RequeteFiltre = $connection->query("SELECT * FROM `informations` WHERE $Condition ORDER BY NombreVisites DESC LIMIT 5 OFFSET $n;");
+            for($i = 0; $i < $RequeteFiltre->num_rows; $i++){
+                $RequeteFiltre->data_seek($i);
+                $RowFiltre = $RequeteFiltre->fetch_assoc();
+                Publicite($RowFiltre['id']);
+            }
+            return $RequeteFiltre->num_rows;
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +74,7 @@
     <title>Document</title>
     <?php include("Menu.php"); ?>
     <link rel = "stylesheet" href="CSS/PageAccueil.css"/>
+    <link rel = "stylesheet" href="CSS/LaPublicite.css"/>
 </head>
 <body>
     <center id = "ApresMenu">
@@ -71,26 +123,49 @@
         <img src="Images/image de recherche.png" id = "image_LocationDeVoitures"/>
     </center>
     <?php
-        include("Publicite.php");
-        if(isset($_POST['Pays'])){
-            $Condition = "Pays = '".$_POST['Pays']."'";
-            if($_POST['DateRetrait']){
-                $Condition = $Condition . " && (DateDebutDisponible = NULL || DateDebutDisponible <= '".$_POST['DateRetrait']."')";
-            }
-            if($_POST['DateRetour']){
-                $Condition = $Condition . " && (DateFinDisponible = NULL || DateFinDisponible >= '".$_POST['DateRetour']."')";
-            }
-            if(isset($_POST['Marque'])){
-                $Condition = $Condition . " && Marque = '".$_POST['Marque']."'";
-            }
-            $RequeteFiltre = $connection->query("SELECT * FROM `informations` WHERE $Condition;");
-            for($i = 0; $i < $RequeteFiltre->num_rows; $i++){
-                $RequeteFiltre->data_seek($i);
-                $RowFiltre = $RequeteFiltre->fetch_assoc();
-                Publicite($RowFiltre['id']);
-            }
-        }
-        $connection = NULL;
+        $limit = AjouterPublicites($Numero, $connection);
     ?>
+    <style>
+#DivAutresPublicites{
+    background-color : rgb(200, 200, 200);
+    border-color: rgb(150, 150, 150);
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 7.5px;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+    display: inline-block;
+}
+#ImageAutresPublicites{
+    /*background-color: green;*/
+    height: 25px;
+    display: inline-block;
+    margin-top: 1px;
+    margin-bottom: -3px;
+}
+#AutresPublicites{
+    /*background-color: red;*/
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: -12px;
+    margin-bottom: 1px;
+}
+</style>
+    <center id = "CenterBoutonAjouterBublicite">
+        <div id = "DivAutresPublicites">
+            <a href = "#" OnClick = "document.getElementById('PageSuivante').submit()" style = "text-decoration: none;">
+                <img src = "Images/AjouterPlusDePublicites.png" id = "ImageAutresPublicites"/>
+                <p id = "AutresPublicites">Page suivante</p>
+            </a>
+        </div>
+    </center>
 </body>
 </html>
+<?php
+    if($limit<5){
+        echo "<script> CenterBoutonAjouterBublicite.innerHTML = ''; </script>";
+    }
+    $connection = NULL;
+?>

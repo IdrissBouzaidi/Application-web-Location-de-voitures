@@ -10,7 +10,7 @@
 ?>
 <?php
     $requete = $connection->query("select * from informations where id = '$id';");
-    $requete3 = $connection->query("select * from imagesvoitures where id = '$id';");
+    $requete3 = $connection->query("select * from imagesvoitures where id = '$id' ORDER BY NUM;");
     $requete->data_seek(0);
     $requete3->data_seek(0);
     $row = $requete->fetch_assoc();

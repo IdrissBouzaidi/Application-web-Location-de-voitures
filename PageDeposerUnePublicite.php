@@ -38,7 +38,7 @@
                             }
                         ?>
                     </select>
-                    <input name = "Ville" type = "text" class = "formulaire" placeholder = "Saisir la ville" required pattern = "[A-Za-z0-9_-]{2,50}"><br/>
+                    <input name = "Ville" type = "text" class = "formulaire" placeholder = "Saisir la ville" required pattern = "[A-Za-z0-9_- ]{2,50}"><br/>
                     <select name = "Marque" style = "width: 320px; color: rgb(128, 128, 128);" class = "formulaire" required>
                         <option value="" disabled selected style = "background-color: rgba(200, 200, 200, 255);">Choisir la marque</option>
                         <?php
@@ -46,11 +46,11 @@
                             for($i = 0; $i < $requete->num_rows; $i++){
                                 $requete->data_seek($i);
                                 $row = $requete->fetch_assoc();
-                                echo "<option style = 'background-color: rgba(230, 230, 230, 0.8);' value = " . $row['marque'] . ">" . $row['marque'] . "</option>";
+                                echo "<option style = 'background-color: rgba(230, 230, 230, 0.8);' value = " . $row['Marque'] . ">" . $row['Marque'] . "</option>";
                             }
                         ?>
                     </select>
-                    <input name = "Modele" type = "text" class = "formulaire" placeholder = "Saisir le modèle" required pattern = "[^()'%!,=&$*+]{1,50}"><br/>
+                    <input name = "Modele" type = "text" class = "formulaire" placeholder = "Saisir le modèle" required pattern = "[^()']{1,50}"><br/>
                     <input name = "Prix" type = "text" class = "formulaire" placeholder = "Saisir le prix/Jour" required pattern = "[0-9]{1,5}"><br/>
                     <label class = "Text" id = "label">Ecrire une description sur la voiture</label><br/>
                     <textarea name = "Description" class = "formulaire"></textarea><br/>
