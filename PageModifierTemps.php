@@ -1,13 +1,20 @@
+<?php
+    session_start();
+    if(!isset($_POST["id"])){
+        header('location:PageAccueil.php');
+    }
+    include("Connexion.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AutoID</title>
+    <link rel="shortcut icon" href="Images/Onglet.ico" type="image/x-icon" />
     <?php include("Menu.php"); ?>
     <link rel = "stylesheet" href="CSS/PageModifierTemps.css"/>
-    <script src = "JavaScript/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div id = "ApresMenu">
@@ -22,14 +29,12 @@
                 </div>
                 <center>
                     <div id = "DivBouton">
-                        <input type = "submit" name = "Submit1" class = "Bouton" value = "Valider" />
+                        <input type = "submit" name = "Submit1" class = "Bouton" id = "Bouton" value = "Valider" />
                     </div>
                 </center>
                 <?php
-                    if(isset($_POST["email"], $_POST["password"])){
+                    if(isset($_SESSION["email"])){
                         echo '
-                            <input type = "hidden" name = "email" value = "'.$_POST["email"].'" />
-                            <input type = "hidden" name = "password" value = "'.$_POST["password"].'" />
                             <input type = "hidden" name = "id" value = "'.$_POST["id"].'" />
                         ';
                     }
@@ -39,3 +44,13 @@
     </div>
 </body>
 </html>
+<script>
+    $(document).ready(function(){
+        $("#Bouton").mouseenter(function(){
+            $(this).css("background-color", "rgb(255, 110, 50)");
+        });
+        $("#Bouton").mouseleave(function(){
+            $(this).css("background-color", "rgb(26, 115, 232)");
+        });
+    });
+</script>

@@ -1,23 +1,15 @@
 <?php
+    session_start();
+    include("Connexion.php");
     if(isset($_POST["Numero"])){
         $Numero = $_POST["Numero"];
     }
     else{
         $Numero = 0;
     }
-    echo '
-        <form id = "PageSuivante" action = "PageProfil.php" method = "POST">
-            <input type = "hidden" name = "Numero" value = "'.($Numero + 5).'" />
-        ';
-        if(isset($_POST["email"], $_POST["password"])){
-            echo '
-                <input type = "hidden" name = "email" value = "'.$_POST["email"].'" />
-                <input type = "hidden" name = "password" value = "'.$_POST["password"].'" />
-            ';
-        }
-        if(isset($_POST["id"])){
-            echo '<input type = "hidden" name = "id" value = "'.$_POST["id"].'" />';
-        }
+    if(isset($_POST["id"])){
+        echo '<input type = "hidden" name = "id" value = "'.$_POST["id"].'" />';
+    }
     echo '</form>';
 ?>
 <!DOCTYPE html>
@@ -26,7 +18,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AutoID</title>
+    <link rel="shortcut icon" href="Images/Onglet.ico" type="image/x-icon" />
     <?php include("Menu.php"); ?>
     <link rel = "stylesheet" href="CSS/PageProfil.css"/>
 </head>
@@ -49,7 +42,6 @@
                     $connection->query("UPDATE informations SET DateFinDisponible = NULL WHERE id = '$_POST[id]';");
                 }
             }
-            $connection = NULL;
     ?>
     <link rel = "stylesheet" href="CSS/PageSeConnecter.css"/>
     <div id = "ApresMenu">
@@ -72,7 +64,7 @@
             <?php
                 if(!$_POST['DateDebut'] || !$_POST['DateFin'] || $_POST['DateDebut']<$_POST['DateFin']){
             ?>
-            <form action = "PagePublicite.php" method = "POST">
+            <form action = "PagePublicite.php?id=<?php echo $_POST['id']; ?>" method = "POST">
                 <div>
                     <div id = "DivConnexion">
                         <div id = "BouttonEnvoyer">
@@ -99,8 +91,6 @@
                 <?php
                     if(isset($_POST['DateDebut'])){
                         echo '
-                            <input type = "hidden" name = "email" value = "'.$_POST["email"].'" />
-                            <input type = "hidden" name = "password" value = "'.$_POST["password"].'" />
                             <input type = "hidden" name = "id" value = "'.$_POST["id"].'" />
                         ';
                     }
@@ -113,18 +103,15 @@
         else{
     ?>
     <div id = "ApresMenu">
-        <div id = "BackgroundPublicite">
+        <div id = "BackgroundPublicite" class = "BackgroundPublicite">
             <?php
-            $connection = new mysqli("localhost", "root", "", "applicationweblocationdevoitures");
-            $connection->set_charset("utf8");
-            mysqli_set_charset($connection, "utf8");/*Cette ligne et la ligne qui est au dessus sont les résponsables à lire les caractères accentiés*/
-            if(isset($_POST['id'])){
-                $requete = $connection->query("select * from informations where id = '".$_POST['id']."';");
-                $requete2 = $connection->query("select * from utilisateurs where Adresse = (SELECT AdresseUtilisateur FROM informations WHERE id = '".$_POST['id']."');");
+            if(isset($_GET['id'])){
+                $requete = $connection->query("select * from informations where id = '".$_GET['id']."';");
+                $requete2 = $connection->query("select * from utilisateurs where id = '".$_GET['id']."';");
             }
-            else if(isset($_POST["email"], $_POST["password"])){
-                $requete = $connection->query("select * from informations where AdresseUtilisateur = '$_POST[email]';");
-                $requete2 = $connection->query("select * from utilisateurs where Adresse = '$_POST[email]';");
+            else if(isset($_SESSION["email"])){
+                $requete = $connection->query("select * from informations where AdresseUtilisateur = '$_SESSION[email]';");
+                $requete2 = $connection->query("select * from utilisateurs where Adresse = '$_SESSION[email]';");
             }
             $requete->data_seek(0);
             $requete2->data_seek(0);
@@ -148,13 +135,16 @@
             </div>
         </div>
     </div>
-    <?php
+    <div id = "AjouterPublicites">
+        <?php
             include("Publicite.php");
-            if(isset($_POST['id'])){
-                $RequeteFiltre = $connection->query("SELECT * FROM `informations` WHERE AdresseUtilisateur = (SELECT AdresseUtilisateur FROM `informations` WHERE id = '$_POST[id]');");
+            if(isset($_GET['id'])){
+                $RequeteFiltre = $connection->query("SELECT * FROM `informations` WHERE AdresseUtilisateur = (SELECT Adresse FROM `utilisateurs` WHERE id = '$_GET[id]') ORDER BY NombreVisites DESC LIMIT 5 OFFSET $Numero;");
+                $len = $connection->query("SELECT * FROM `informations` WHERE AdresseUtilisateur = (SELECT Adresse FROM `utilisateurs` WHERE id = '$_GET[id]');")->num_rows;
             }
             else{
-                $RequeteFiltre = $connection->query("SELECT * FROM `informations` WHERE AdresseUtilisateur = '$_POST[email]' ORDER BY NombreVisites DESC LIMIT 5 OFFSET $Numero;");
+                $RequeteFiltre = $connection->query("SELECT * FROM `informations` WHERE AdresseUtilisateur = '$_SESSION[email]' ORDER BY NombreVisites DESC LIMIT 5 OFFSET $Numero;");
+                $len = $connection->query("SELECT * FROM `informations` WHERE AdresseUtilisateur = '$_SESSION[email]';")->num_rows;
             }
             for($i = 0; $i < $RequeteFiltre->num_rows; $i++){
                 $RequeteFiltre->data_seek($i);
@@ -162,47 +152,102 @@
                 Publicite($RowFiltre['id']);
             }
         }
-    ?>
-    <style>
-#DivAutresPublicites{
-    background-color : rgb(200, 200, 200);
-    border-color: rgb(150, 150, 150);
-    border-radius: 5px;
-    border-style: solid;
-    border-width: 1px;
-    margin-top: 7.5px;
-    padding-left: 7.5px;
-    padding-right: 7.5px;
-    display: inline-block;
-}
-#ImageAutresPublicites{
-    /*background-color: green;*/
-    height: 25px;
-    display: inline-block;
-    margin-top: 1px;
-    margin-bottom: -3px;
-}
-#AutresPublicites{
-    /*background-color: red;*/
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    vertical-align: middle;
-    display: inline-block;
-    margin-top: -12px;
-    margin-bottom: 1px;
-}
-</style>
-    <center id = "CenterBoutonAjouterBublicite">
-        <div id = "DivAutresPublicites">
-            <a href = "#" OnClick = "document.getElementById('PageSuivante').submit()" style = "text-decoration: none;">
-                <img src = "Images/AjouterPlusDePublicites.png" id = "ImageAutresPublicites"/>
-                <p id = "AutresPublicites">Page suivante</p>
-            </a>
-        </div>
-    </center>
+        ?>
+    </div>
+    <div id = "CenterBoutonAjouterBublicite">
+        <a id = "PageSuivante" style = "text-decoration: none;">
+            <img src = "Images/AjouterPlusDePublicites.png" id = "ImageAutresPublicites"/>
+            <p id = "AutresPublicites">Page suivante</p>
+        </a>
+    </div>
 </body>
+<script>
+    $(document).ready(function(){
+        var i = 0;
+        var len = <?php if(isset($len)){
+                    echo $len;
+                    }
+                    else{
+                        echo 0;
+                    }
+                ?>;
+        if(i + 5 >= len){
+            $("#CenterBoutonAjouterBublicite").hide();
+        }
+        $("#PageSuivante").click(function(){
+            i += 5;
+            var id = "<?php
+                    if(isset($_GET['id'])){
+                        echo $_GET["id"];
+                    }
+                    else{
+                        $Requete = $connection->query("SELECT * FROM `informations` WHERE AdresseUtilisateur = '$_SESSION[email]' LIMIT 1;");
+                        $Requete->data_seek(0);
+                        $Row = $Requete->fetch_assoc();
+                        echo $Row['id'];
+                    } ?>";
+            var nbre = {
+                nbre : i,
+                id : id
+            }
+            var nombre = JSON.stringify(nbre);
+            $.post("AJAX/AjouterPubliciters.php", {v:nombre}).then(function(data){
+                $('#AjouterPublicites').append(data);
+            });
+            len = <?php if(isset($len)){
+                            echo $len;
+                        }
+                        else{
+                            echo 0;
+                        }
+                 ?>;
+            if(i + 5 >= len){
+                $("#CenterBoutonAjouterBublicite").hide();
+            }
+        });
+
+        var size = $(window).width();
+        if(size<1000){
+            $(".BackgroundPublicite").css({"margin-left" : "100px",
+                                           "width" : "800px"
+                                        });
+            $("#CenterBoutonAjouterBublicite").css("margin-left", "420px");
+        }
+        else{
+            $(".BackgroundPublicite").css({"margin-left" : "10%",
+                                           "width" : "80%"
+                                          });
+            $("#CenterBoutonAjouterBublicite").css({"margin-left" : "auto", "margin-right" : "auto"});
+        }
+        $(window).on('resize', function(){
+            size = $(window).width();
+            if(size<1000){
+                $(".BackgroundPublicite").css({"margin-left" : "100px",
+                                            "width" : "800px"
+                                            });
+                $("#CenterBoutonAjouterBublicite").css("margin-left", "420px");
+            }
+            else{
+                $(".BackgroundPublicite").css({"margin-left" : "10%",
+                                            "width" : "80%"
+                                            });
+                $("#CenterBoutonAjouterBublicite").css({"margin-left" : "auto", "margin-right" : "auto"});
+            }
+        });
+
+        
+        $("#CenterBoutonAjouterBublicite").mouseenter(function(){
+            $(this).css("background-color", "rgb(255, 110, 50)");
+        });
+        $("#CenterBoutonAjouterBublicite").mouseleave(function(){
+            $(this).css("background-color", "rgb(17, 106, 179)");
+        });
+
+        var longueur = $("#PremiereParagrapheImage").height();//On récupére la longueur de l'image de profil pour donner la valeur de la variable "longue" à son arrière plan.
+        $("#BackgroundPublicite").css("height", longueur * 1.2);
+        $("#Publicite1ereParagraphe").css({"margin-top" : 0.075 * longueur});
+    });
+</script>
 <?php
-    if($RequeteFiltre->num_rows < 5){
-        echo "<script> CenterBoutonAjouterBublicite.innerHTML = ''; </script>";
-    }
     $connection = NULL;
 ?>

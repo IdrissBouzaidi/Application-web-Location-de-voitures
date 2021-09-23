@@ -8,6 +8,7 @@
 }
 #Publicite1ereParagraphe{
     /*background-color: brown;*/
+    vertical-align: middle;
 }
 #Publicite2emeParagraphe{
     /*background-color : red;*/
@@ -20,8 +21,8 @@
 }
 #PremiereParagrapheInformations{
     /*background-color: yellow;*/
-    width: 40%;
-    margin-left: 16%;
+    width: 50%;
+    margin-left: 6%;
     display: inline-block;
     vertical-align: middle;
 }
@@ -61,4 +62,30 @@
 #Tel{
     /*background-color: yellow;*/
     text-align: right;
+}
+#CenterBoutonAjouterBublicite{
+    background-color : rgb(17, 106, 179);
+    border-color: rgb(150, 150, 150);
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 7.5px;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+    width: 130px;
+}
+#ImageAutresPublicites{
+    /*background-color: green;*/
+    height: 25px;
+    display: inline-block;
+    margin-top: 1px;
+    margin-bottom: -3px;
+}
+#AutresPublicites{
+    /*background-color: red;*/
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: -12px;
+    margin-bottom: 1px;
 }

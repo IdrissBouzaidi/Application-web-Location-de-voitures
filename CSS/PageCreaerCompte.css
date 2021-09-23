@@ -10,6 +10,7 @@
     border-width: 2px;
     margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
     transform: translateY(-60%); /* tiré de la moitié de sa propre hauteur */
+    box-shadow: rgb(50 50 0 / 25%) 0px 30px 60px -12px inset, rgb(0 0 0 / 25%) 0px 18px 36px -18px inset;
 }
 
 .formulaire{

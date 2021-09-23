@@ -1,22 +1,23 @@
 #image_LocationDeVoitures{
-    width: 80%;
+    width: 100%;
+    min-width: 1000px;
     display: inline-block;
 }
 #FormulaireAccueil{
-    background-color:rgba(176, 224, 230, 0.575) ;
-    box-shadow: 5px 5px 5px rgba(255, 182, 193, 0.473);
-    position:absolute;
+    background-color:rgba(214, 147, 108, 0.575) ;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     border-radius: 10px;
-    margin-top: 26%;
-    margin-left: 20%;
-    padding-top: 5%;
-    width: 60%;
-    height: 22%;
+    width: 600px;
+    margin-top: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-right: auto;
+    margin-left: auto;
 }
 .formulaire{
     background-color:rgba(250, 128, 114, 0.568);
     font-family:Georgia, 'Times New Roman', Times, serif;
-    height: 22%;
+    height: 40px;
     border-radius: 5px;
     font-size: 125%;
     box-shadow: 10px 5px 5px rgba(255, 0, 0, 0.5);
@@ -24,8 +25,13 @@
 #formulaire1{
     display: block;
     width: 60%;
-    margin-top: -30px;
     margin-left: -5%;
+}
+#forulaire1_5{
+    display: block;
+    width: 60%;
+    margin-left: -5%;
+    margin-top: -10px;
 }
 #formulaire2{
     display: block;
@@ -39,7 +45,7 @@
     width: 75%;
 }
 #formulaire4{
-    margin-top: 2%;
+    margin-top: 7px;
     display: inline-block;
     width: 40%;
     margin-left: -5%;
@@ -68,19 +74,20 @@
     display: inline-block;
 }
 .divDate{
-    margin-top: 4%;
+    margin-top: 15px;
     display: inline-block;
 }
-#DivAutresPublicites{
-    background-color : rgb(200, 200, 200);
+#CenterBoutonAjouterBublicite{
+    background-color: rgb(17, 106, 179);
     border-color: rgb(150, 150, 150);
     border-radius: 5px;
     border-style: solid;
     border-width: 1px;
-    margin-top: 5px;
+    margin-top: 7.5px;
+    margin-bottom: 7.5px;
     padding-left: 7.5px;
     padding-right: 7.5px;
-    display: inline-block;
+    width: 130px;
 }
 #ImageAutresPublicites{
     /*background-color: green;*/
@@ -91,6 +98,7 @@
 }
 #AutresPublicites{
     /*background-color: red;*/
+    color: #f7edde;
     font-family:Georgia, 'Times New Roman', Times, serif;
     vertical-align: middle;
     display: inline-block;
